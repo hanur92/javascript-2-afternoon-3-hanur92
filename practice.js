@@ -104,17 +104,45 @@ contains(names, "Colt", function (result) {
   Write a function called uniq that takes in an array and a callback function.
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
-
 //Code Here
 const uniq = (arr, cb) => {
-  return cb(
-    arr.reduce((acc, cur) => {
-      if (acc === cur) {
-        delete cur;
-      }
-    })
-  );
+  const newArr = () => {
+    return Array.from(new Set(arr));
+  };
+  cb = newArr;
+  return cb();
 };
+// cb = () => {
+//   let res = [];
+//   let rec = () => {
+//     for (let i = 0; i < arr.length; i++) {
+//       for (let n = arr.length; arr.length > n; n--) {
+//         if (arr[i] !== arr[n]) {
+//           res.splice(i, i + 1);
+//         }
+//         res.push;
+//         if (arr[i] !== arr[n]) {
+//           rec();
+//         }
+//       }
+//     }
+//     return res;
+//   };
+// };
+// return cb();
+
+// ! 배열 전체 순회.
+// ! 인수의 배열의 각각의 요소와 겹치는 요소가 없어야 함.
+// ! let res = [];
+// ! for(let i =0; i<arr.length; i++){
+// !   for(let n = arr.length; arr.length<n; n--){
+// !     if(arr[i]!==arr[n]){
+// !       res.splice(i,i+1)
+// !     }
+// !   }
+// ! return res;
+// ! };
+
 // Do not edit the code below.
 uniq(names, function (uniqArr) {
   console.log(
