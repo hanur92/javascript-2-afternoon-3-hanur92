@@ -197,16 +197,11 @@ console.log(
 
 // Code here
 const getUserById = (users, id, cb) => {
-  cb = () => {
-    for (let i = 0; i < users.length; i++) {
-      const user = users[i];
-      for (const key in user) {
-        if (user[key] === id) {
-          cb(user.email, user.name, user.address);
-        }
-      }
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].id === id) {
+      cb(users[i]);
     }
-  };
+  }
 };
 // Do not edit the code below.
 var users = [
