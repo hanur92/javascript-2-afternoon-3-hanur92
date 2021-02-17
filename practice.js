@@ -105,13 +105,6 @@ contains(names, "Colt", function (result) {
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 //Code Here
-const uniq = (arr, cb) => {
-  const newArr = () => {
-    return Array.from(new Set(arr));
-  };
-  cb = newArr;
-  return cb();
-};
 // cb = () => {
 //   let res = [];
 //   let rec = () => {
@@ -142,6 +135,23 @@ const uniq = (arr, cb) => {
 // !   }
 // ! return res;
 // ! };
+// const uniq = (arr, cb) => {
+//   const newArr = () => {
+//     return Array.from(new Set(arr));
+//   };
+//   cb = newArr;
+//   return cb();
+// };
+const uniq = (arr, cb) => {
+  let newArr = () => {
+    return arr.reduce(
+      (acc, cur) => (acc.includes(cur) ? acc : [...acc, cur]),
+      []
+    );
+  };
+  cb = newArr();
+  return cb;
+};
 
 // Do not edit the code below.
 uniq(names, function (uniqArr) {
@@ -160,11 +170,22 @@ uniq(names, function (uniqArr) {
 */
 
 //Code Here
-const each = (arr, cb) => {};
+const each = (arr, cb) => {
+  for (let i = 0; i < arr.length; i++) {
+    cb(arr[i], i);
+  }
+};
+
 // Do not edit the code below.
 each(names, function (item, indice) {
   console.log("The item in the " + indice + " position is " + item);
 });
+
+console.log(
+  each(names, function (item, indice) {
+    console.log("The item in the " + indice + " position is " + item);
+  })
+);
 // Do not edit the code above.
 
 ////////// PROBLEM 7 //////////
