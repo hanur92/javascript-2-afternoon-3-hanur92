@@ -143,14 +143,12 @@ contains(names, "Colt", function (result) {
 //   return cb();
 // };
 const uniq = (arr, cb) => {
-  let newArr = () => {
-    return arr.reduce(
-      (acc, cur) => (acc.includes(cur) ? acc : [...acc, cur]),
-      []
-    );
-  };
-  cb = newArr();
-  return cb;
+  // let newArr = arr.reduce(
+  //   (acc, cur) => (acc.includes(cur) ? acc : [...acc, cur]),
+  //   []
+  // );
+  let newArr = Array.from(new Set(arr));
+  return cb(newArr);
 };
 
 // Do not edit the code below.
