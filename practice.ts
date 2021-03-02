@@ -27,16 +27,21 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 // Code Here
-const first = (arr: string[], cb: Function): any => {
-  cb(arr[0]);
+
+type callBack = (params: string) => void;
+
+let FirstCallBack: callBack = (firstName) => {
+  console.log("The first name in names is " + firstName);
+};
+
+const first = (arr: string[], callback) => {
+  callback(arr[0]);
 };
 // Do not edit the code below.
 var names = ["Tyler", "Cahlan", "Ryan", "Colt", "Tyler", "Blaine", "Cahlan"];
 
-first(names, function (firstName) {
-  console.log("The first name in names is " + firstName);
-  return firstName;
-});
+first(names, FirstCallBack);
+
 // Do not edit the code above.
 
 ////////// PROBLEM 2 //////////
@@ -47,14 +52,16 @@ first(names, function (firstName) {
 */
 
 //Code Here
-const last = (arr, cb) => {
+let LastCallBack: callBack = (lastName) => {
+  console.log("The last name in names is " + lastName);
+  return lastName;
+};
+
+const last = (arr: string[], cb) => {
   cb(arr[arr.length - 1]);
 };
 // Do not edit the code below.
-last(names, function (lastName) {
-  console.log("The last name in names is " + lastName);
-  return lastName;
-});
+last(names, LastCallBack);
 // Do not edit the code above.
 
 ////////// PROBLEM 3 //////////
@@ -64,14 +71,18 @@ last(names, function (lastName) {
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-//Code Here
-const multiply = (numb1, numb2, cb) => {
+type callBack2 = (params: number) => void;
+
+//Code
+let MultiplyCallBack: callBack2 = (answer) => {
+  console.log("The answer is " + answer);
+};
+
+const multiply = (numb1: number, numb2: number, cb) => {
   return cb(numb1 * numb2);
 };
 // Do not edit the code below.
-multiply(4, 3, function (answer) {
-  console.log("The answer is " + answer); //should console.log 12
-});
+multiply(4, 3, MultiplyCallBack);
 // Do not edit the code above.
 
 ////////// PROBLEM 4 //////////
@@ -84,7 +95,11 @@ multiply(4, 3, function (answer) {
 */
 
 //Code Here
-const contains = (arr, str, cb) => {
+const contains = (
+  arr: string[],
+  str: string,
+  cb: { (result: boolean): void }
+) => {
   cb(arr.includes(str));
 };
 // Do not edit the code below.
@@ -141,12 +156,12 @@ contains(names, "Colt", function (result) {
 //   cb = newArr;
 //   return cb();
 // };
-const uniq = (arr, cb) => {
+const uniq = (arr: string[], cb: { (uniqArr: string[]): void }) => {
   // let newArr = arr.reduce(
   //   (acc, cur) => (acc.includes(cur) ? acc : [...acc, cur]),
   //   []
   // );
-  let newArr = Array.from(new Set(arr));
+  let newArr: string[] = Array.from(new Set(arr));
   return cb(newArr);
 };
 
@@ -167,7 +182,12 @@ uniq(names, function (uniqArr) {
 */
 
 //Code Here
-const each = (arr, cb) => {
+const each = (
+  arr: string[],
+  cb: {
+    (item: string, indice: number): void;
+  }
+) => {
   for (let i = 0; i < arr.length; i++) {
     cb(arr[i], i);
   }
@@ -177,12 +197,6 @@ const each = (arr, cb) => {
 each(names, function (item, indice) {
   console.log("The item in the " + indice + " position is " + item);
 });
-
-console.log(
-  each(names, function (item, indice) {
-    console.log("The item in the " + indice + " position is " + item);
-  })
-);
 // Do not edit the code above.
 
 ////////// PROBLEM 7 //////////
@@ -193,7 +207,11 @@ console.log(
 */
 
 // Code here
-const getUserById = (users, id, cb) => {
+const getUserById = (
+  users: object[],
+  id: string,
+  cb: { (users: any): void }
+) => {
   for (let i = 0; i < users.length; i++) {
     if (users[i].id === id) {
       cb(users[i]);
@@ -201,7 +219,10 @@ const getUserById = (users, id, cb) => {
   }
 };
 // Do not edit the code below.
-var users = [
+interface Users {
+  [id: string, email: string, name: string, address: string];
+}
+var users: Users = [
   {
     id: "12d",
     email: "tyler@gmail.com",
