@@ -1,0 +1,28 @@
+{
+  "name": "javascript-2-afternoon-3-hanur92",
+  "version": "1.0.0",
+  "description": "<img src=\"https://s3.amazonaws.com/devmountain/readme-logo.png\" width=\"250\" align=\"right\">",
+  "main": "practice.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanur92/javascript-2-afternoon-3-hanur92.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanur92/javascript-2-afternoon-3-hanur92/issues"
+  },
+  "homepage": "https://github.com/hanur92/javascript-2-afternoon-3-hanur92#readme",
+  "devDependencies": {
+    "typescript": "^4.2.2"
+  },
+  "dependencies": {
+    "@types/jasmine": "^3.6.4"
+  }
+}
