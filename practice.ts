@@ -207,11 +207,7 @@ each(names, function (item, indice) {
 */
 
 // Code here
-const getUserById = (
-  users: object[],
-  id: string,
-  cb: { (users: any): void }
-) => {
+const getUserById = (users, id: string, cb: { (users: any): void }) => {
   for (let i = 0; i < users.length; i++) {
     if (users[i].id === id) {
       cb(users[i]);
@@ -220,7 +216,7 @@ const getUserById = (
 };
 // Do not edit the code below.
 interface Users {
-  [id: string, email: string, name: string, address: string];
+  [index: number]: { id: string; email: string; name: string; address: string };
 }
 var users: Users = [
   {
